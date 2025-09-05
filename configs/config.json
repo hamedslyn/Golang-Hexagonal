@@ -1,0 +1,7 @@
+{
+  "environment": "Development",
+  "port": "8080",
+  "postgres": {
+    "connection_string": "postgres://root:123456@db:5432/tododb?sslmode=disable"
+  }
+}
