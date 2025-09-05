@@ -32,6 +32,24 @@ make test
 - `migrations/`: SQL migration files
 - `pkg/`: shared packages (config, server)
 
+## Architecture: Hexagonal (Ports & Adapters)
+This project follows Hexagonal Architecture to keep domain logic independent from frameworks and external systems.
+
+- Domain (`internal/todo/domain/`):
+  - Core business entities and rules. No framework or I/O dependencies.
+
+- Ports (`internal/todo/ports/`):
+  - Interfaces that define what the domain needs from the outside world (e.g., repositories, validators). These are implemented by adapters.
+
+- Use Cases (`internal/todo/usecase/`):
+  - Application services orchestrating domain operations via ports. Contains business workflows and unit tests.
+
+- Adapters (`internal/todo/adapters/`):
+  - Implementations of ports and entrypoints:
+    - `postgres/`: data persistence adapter implementing repository ports.
+    - `http/`: transport adapter exposing HTTP endpoints to the outside.
+    - `validator/`: input validation adapter.
+
 ## Notes
 - Unit tests mock or fake external services so tests do not depend on a live database.
 - See `internal/todo/adapters/postgres/repository_test.go` and `internal/todo/usecase/service_test.go` for examples.
