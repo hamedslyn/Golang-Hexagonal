@@ -28,4 +28,4 @@ RUN chmod +x /usr/local/bin/main
 
 EXPOSE 8080
 
-ENTRYPOINT ["/main"]
+ENTRYPOINT ["main"]
