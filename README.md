@@ -1,4 +1,4 @@
-# HeliTodo
+# Golang Hexagonal 
 **A minimal Todo service with PostgreSQL, migrations, HTTP API, and unit tests.**
 
 ## Configuration
